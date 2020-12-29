@@ -1,0 +1,765 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+body{
+	background: #F8F8FF;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+.big-div{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+	/* background-color: #000000; */
+	z-index: 99;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.header-box{
+	width: 100%;
+	height: 50px;
+	box-shadow: 0 2px 5px lightgray;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	/* overflow: hidden; */
+}
+.header{
+	width: 1200px;
+	margin: 0 auto;
+	height: 50px;
+	/* border: 1px solid red; */
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	position: relative;
+	background-color: white;
+}
+.logo-img{
+	width: 100px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+.logo-img>img{
+	width: 100%;
+	/* height: 100%; */
+}
+.header-ul{
+	display: flex;
+}
+.header-ul li{
+	box-sizing: border-box;
+	padding: 0 20px;
+	text-align: center;
+	cursor: pointer;
+	/* border: 1px solid red; */
+}
+.header-ul li:hover{
+	color: deepskyblue;
+}
+input[type="search"]{
+	outline: none;
+	border: 1px solid #00BFFF;
+	width: 400px;
+	line-height: 30px;
+	font-size: 12px;
+	box-sizing: border-box;
+	padding: 0 5px;
+}
+.icon-search{
+	cursor: pointer;
+}
+.user{
+	width: 200px;
+	height: 50px;
+	/* border: 1px solid red; */
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	justify-content: space-around;
+	position: absolute;
+	right: 0;
+}
+.user-headimg{
+	display: block;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.5s ease;
+}
+.user-headimg img{
+	width: 100%;
+	height: 100%;
+}
+.user-headimg:hover{
+	transform: scale(1.4);
+}
+.user-control{
+	font-size: 14px;
+	box-sizing: border-box;
+	/* border: 1px solid red; */
+}
+.user-control>span{
+	cursor: pointer;
+}
+.user-control span:hover{
+	color: deepskyblue;
+}
+.user-controls{
+	position: absolute;
+	box-shadow: 2px 2px 5px lightgray;
+	box-sizing: border-box;
+	padding: 5px 5px;
+	bottom: -90%;
+	left: 0;
+	background: white;
+	border-radius: 5px;
+	display: none;
+	z-index: 100;
+	animation: tuichu 0.5s ease-in-out;
+}
+.user-controls ul li{
+	box-sizing: border-box;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: 0.2s ease-in-out;
+}
+.user-controls ul li:hover{
+	color: deepskyblue;
+}
+@keyframes tuichu{
+	from{
+		opacity: 0;
+		bottom: 0;
+	}
+	to{
+		opacity: 1;
+		bottom: -90%;
+	}
+}
+
+/* 主页banner */
+.user-banner{
+	width: 1200px;
+	margin: 0 auto;
+	height: 200px;
+	/* border: 1px solid red; */
+	position: relative;
+	background-color: white;
+	margin-top: 50px;
+	overflow: hidden;
+}
+.bg-img{
+	position: absolute;
+	width: 100%;
+	top: -45%;
+}
+.user-information{
+	width: 400px;
+	position: absolute;
+	display: block;
+	bottom: 20px;
+	left: 30px;
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+}
+.banner-headimg{
+	display: block;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	overflow: hidden;
+	bottom: 50px;
+	left: 50px;
+	cursor: pointer;
+}
+.banner-headimg::before{
+	content: "更换头像";
+	display: block;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	position: absolute;
+	color: white;
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(1,1,1,0);
+	transition: 0.3s ease;
+	opacity: 0;
+}
+.banner-headimg:hover::before{
+	background: rgba(1,1,1,0.5);
+	opacity: 1;
+}
+.banner-headimg img{
+	width: 100%;
+	height: 100%;
+}
+.user-container{
+	width: 300px;
+	/* border: 1px solid red; */
+	position: relative;
+}
+.user-container-top{
+	/* border: 1px solid red; */
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.user-name{
+	color: white;
+	font-family: "楷体";
+	font-size: 22px;
+	font-weight: bolder;
+	/* position: absolute; */
+	/* border: 1px solid red; */
+}
+.user-level{
+	display: inline-block;
+	color: white;
+	background: red;
+	width: 40px;
+	font-size: 14px;
+	font-family: "仿宋";
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	margin-left: 10px;
+	border-radius: 3px;
+}
+.user-container-bottom{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	/* border: 1px solid red; */
+}
+input[name="person-note"]{
+	outline: none;
+	width: 100%;
+	line-height: 25px;
+	position: absolute;
+	bottom: 0;
+	font-size: 12px;
+	border-radius: 3px;
+	background-color: rgba(255,255,255,0);
+	box-sizing: border-box;
+	padding: 0 0 0 5px;
+	color: whitesmoke;
+	border: 1px solid transparent;
+	transition: 0.2s ease-in-out;
+	/* backface-visibility: hidden; */
+}
+
+/* 用户主页导航 */
+.user-header{
+	width: 1200px;
+	height: 65px;
+	margin: 0 auto;
+	/* border: 1px solid red; */
+	position: relative;
+	background-color: white;
+	border-radius: 0 0 5px 5px;
+}
+.user-header-ul{
+	display: flex;
+}
+.user-header-ul li{
+	width: 100px;
+	height: 65px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 16px;
+	transition: 0.1s ease-in-out;
+}
+.user-header-ul li:hover{
+	color: deepskyblue;
+}
+.slide-box{
+	position: absolute;
+	height: 2px;
+	bottom: 0;
+}
+.slide{
+	display: block;
+	height: 2px;
+	background: deepskyblue;
+	position: absolute;
+	left: 0;
+}
+.user-number-ul{
+	display: flex;
+	position: absolute;
+	right: 20px;
+	top: 0;
+}
+.user-number-ul li{
+	width: 55px;
+	height: 65px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	justify-content: center;
+	font-family: "楷体";
+}
+
+
+/* 个人主页详情模块 */
+.myindex-main{
+	width: 1200px;
+	margin: 25px auto;
+	background: white;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	border-radius: 5px;
+}
+/* 正在追番 */
+.like-movie-box,.collect-movie-box{
+	width: 100%;
+	border-bottom: 1px solid lightgray;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+}
+.like-movie-title,.collect-movie-maintitle,.subscribe-title{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.like-movie-title h3,.collect-movie-maintitle h3,.subscribe-title h3{
+	font-size: 20px;
+	font-family: "新宋体";
+}
+.like-movie-title span,.collect-movie-maintitle span{
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 10px;
+	border: 1px solid #666;
+	border-radius: 5px;
+	font-size: 14px;
+	color: #666;
+	cursor: pointer;
+	transition: 0.15s ease-in-out;
+}
+.like-movie-title span:hover,.collect-movie-maintitle span:hover{
+	color: deepskyblue;
+	border-color: deepskyblue;
+}
+.like-movie-main,.collect-movie-main{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px 0;
+	display: flex;
+	justify-content: space-between;
+}
+.like-movies,.collect-movies{
+	width: 30%;
+	height: 200px;
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+}
+.like-movies-leftimgbox,.collect-movies-leftimgbox{
+	width: 42%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* border: 1px solid red; */
+}
+.like-movies-leftimgbox img,.collect-movies-leftimgbox img{
+	width: 100%;
+	cursor: pointer;
+	transition: 0.4s ease;
+}
+.like-movies-leftimgbox img:hover,.collect-movies-leftimgbox img:hover{
+	transform: scale(1.01);
+	box-shadow: 0 2px 10px 2px lightgray;
+}
+.like-movies-rightbox,.collect-movies-rightbox{
+	width: 50%;
+	/* border: 1px solid red; */
+}
+.like-movies-righttitle,.collect-movies-righttitle{
+	font-size: 22px;
+	font-family: "仿宋";
+	box-sizing: border-box;
+}
+.like-movies-righttext,.collect-movies-righttext{
+	font-size: 14px;
+	width: 150px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	line-height: 24px;
+	margin-top: 20px;
+	font-family: "仿宋";
+}
+
+
+/* 我的收藏 */
+.collect-movie-box{
+	margin-top: 20px;
+}
+
+/* 我的频道 */
+.mychannel-box{
+	width: 100%;
+	border-bottom: 1px solid lightgray;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	margin-top: 20px;
+}
+.mychannel-title{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.mychannel-title h3{
+	font-size: 20px;
+	font-family: "新宋体";
+}
+.mychannel-create-box{
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 20px 0;
+}
+.mychannel-create-box p{
+	font-size: 14px;
+	color: #666666;
+}
+.mychannel-create-box span{
+	display: inline-block;
+	background: deepskyblue;
+	box-sizing: border-box;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+.mychannel-create-box span:hover{
+	background: #00a1d6;
+}
+
+/* 个人动态渲染 */
+/* .personal-news-box{
+	width: 1200px;
+	margin: 25px auto;
+	background: white;
+	box-sizing: border-box;
+	padding: 10px 40px;
+	border-radius: 5px;
+} */
+.personal-news-header{
+	width: 100%;
+	height: 65px;
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.personal-news-headerleft{
+	display: flex;
+}
+.personal-news-headerimg{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+}
+.personal-news-headerimg img{
+	width: 100%;
+	height: 100%;
+}
+.personal-news-headername{
+	margin-left: 15px;
+}
+.personal-news-username{
+	color: deepskyblue;
+	font-size: 16px;
+	cursor: pointer;
+}
+.personal-news-date{
+	color: #999;
+	font-size: 12px;
+	transition: 0.2s ease-in-out;
+	cursor: pointer;
+}
+.personal-news-date:hover{
+	color: deepskyblue;
+}
+.personal-news-headerright{
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 5px;
+	transition: 0.2 ease-in-out;
+	position: relative;
+	/* border: 1px solid red; */
+}
+.icon-ziyuan{
+	font-size: 28px;
+	cursor: pointer;
+}
+.personal-news-headerright-box{
+	position: absolute;
+	border: 1px solid lightgrey;
+	box-sizing: border-box;
+	width: 100px;
+	left: -100%;
+	bottom: -120%;
+	padding: 10px 4px;
+	border-radius: 5px;
+	display: none;
+	background-color: white;
+}
+.personal-news-headerright-boxul{
+	display: flex;
+}
+.personal-news-headerright-boxul li{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 2px 4px;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+.personal-news-headerright-boxul li:hover{
+	color: deepskyblue;
+}
+/* 动态主体部分 */
+.personal-news-main{
+	width: 70%;
+	/* border: 1px solid red; */
+	margin-left: 65px;
+}
+.personal-news-maintext{
+	font-size: 14px;
+	line-height: 30px;
+}
+.personal-news-main-movie{
+	width: 80%;
+	height: 150px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	display: flex;
+	cursor: pointer;
+	overflow: hidden;
+}
+.personal-news-main-movieleft{
+	width: 40%;
+	height: 100%;
+	/* border: 1px solid red; */
+	position: relative;
+}
+.personal-news-main-movieleft img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.personal-news-main-movietips{
+	font-size: 14px;
+	display: block;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	box-sizing: border-box;
+	padding: 2px 5px;
+	background-color: #00BFFF;
+	color: white;
+	border-radius: 5px;
+	z-index: 2;
+}
+.personal-news-main-moviemain{
+	display: inline-block;
+	position: absolute;
+	height: 100%;
+	/* border: 1px solid red; */
+	width: 100%;
+	opacity: 0;
+	background: rgba(1,1,1,0.2);
+	transition: 0.2s ease-in-out;
+}
+.icon-shizhong{
+	position: absolute;
+	right: 10px;
+	font-size: 26px;
+	color: lightgray;
+	bottom: 10px;
+}
+.personal-news-main-moviedate{
+	font-size: 14px;
+	color: white;
+	position: absolute;
+	bottom: 13px;
+	left: 10px;
+}
+.personal-news-main-movie:hover .personal-news-main-moviemain{
+	opacity: 1;
+}
+.personal-news-main-movie:hover .personal-news-main-movierightTitle{
+	color: deepskyblue;
+}
+.personal-news-main-movieright{
+	width: 50%;
+	margin-left: 20px;
+	position: relative;
+}
+.personal-news-main-movierightTitle{
+	font-size: 17px;
+	box-sizing: border-box;
+	padding: 10px 0 15px 0;
+	transition: 0.2s ease-in-out;
+}
+.personal-news-main-movierightText{
+	font-size: 14px;
+	color: #666;
+	
+}
+.personal-news-main-moviedown{
+	position: absolute;
+	bottom: 5px;
+	display: flex;
+	width: 150px;
+	justify-content: space-evenly;
+	font-size: 18px;
+	color: #999999;
+}
+.personal-news-main-moviedownnum{
+	font-size: 12px;
+	color: #999999;
+}
+
+/* 动态操作样式 */
+.personal-news-control{
+	box-sizing: border-box;
+	padding: 10px 0 30px 0;
+	width: 100%;
+	color: #666666;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid lightgray;
+}
+.icon-zhuanfa{
+	font-size: 26px;
+	cursor: pointer;
+}
+.personal-news-controltext{
+	font-size: 12px;
+	cursor: pointer;
+}
+.personal-news-controlbox{
+	margin-right: 50px;
+}
+.personal-news-controlbox:hover{
+	color: deepskyblue;
+}
+
+/* 我的订阅 */
+.subscribe-main{
+	width: 100%;
+	/* border: 1px solid red; */
+	box-sizing: border-box;
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.subscribe-movies{
+	width: 30%;
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	transition: 0.3s ease-in-out;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.subscribe-movies:hover{
+	box-shadow: 2px 2px 5px lightgray;
+	transform: scale(1.01);
+}
+.subscribe-moviesleft{
+	width: 35%;
+	/* border: 1px solid red; */
+}
+.subscribe-moviesleft-imgbox{
+	width: 100%;
+	height: 165px;
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
+	/* border: 1px solid red; */
+}
+.subscribe-tips{
+	position: absolute;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 3px 7px;
+	background: deepskyblue;
+	border-radius: 0 5px 0 5px;
+	right: 0;
+	color: white;
+	font-size: 13px;
+}
+.subscribe-moviesleft-imgbox img{
+	width: 100%;
+	height: 100%;
+}
+.subscribe-moviesright{
+	width: 60%;
+}
+.subscribe-moviesright-title{
+	font-size: 18px;
+	line-height: 30px;
+	font-family: "仿宋";
+	font-weight: bold;
+}
+.subscribe-moviesright-text{
+	font-size: 14px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	line-height: 24px;
+	margin: 5px 0 10px 0;
+	font-family: "仿宋";
+}
+.subscribe-moviesright-textlikes{
+	font-size: 12px;
+	margin-top: 5px;
+	color: #999999;
+}
+
+

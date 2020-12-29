@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="images/logos.png">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Liuliliuli</title>
+		<link rel="stylesheet" href="css/body.css">
+		<link rel="stylesheet" href="css/show.css">
+		<link rel="stylesheet" href="css/denglu.css">
+		<link rel="stylesheet" href="css/sidebar.css">
+		<link rel="stylesheet" href="css/hot-show.css">
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="css/elementui-dis.css">
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+		<script>
+			
+  </script>
+	</head>
+	<body>
+		<div id="app">
+
+			<el-container id="Box">
+
+				<el-aside width="15%" class="left-box">
+
+					<!-- log盒子 -->
+					<div class="Log-box">
+						<el-popover placement="right" width="300" trigger="hover">
+							<div class="login-wrapper">
+								<form action="" class="form">
+									<span v-html="headImg[users.id-1]"></span>
+									<h2>请登录</h2><br />
+									<div class="input-group">
+										<input type="text" name="username" id="username" />
+										<label for="username">用户名称</label>
+									</div>
+									<div class="input-group">
+										<input type="password" name="psd" id="psd">
+										<label for="psd">密码</label>
+									</div>
+									<button type="button" id="sumbtn" class="submit-btn">登录</button>
+									<a href="#" class="forgot-pw">忘记密码?</a>
+								</form>
+							</div>
+							<el-button plain slot="reference" style="border: none;">
+								<template>
+									<div>
+										<el-avatar :size="50" src="images/user-headimg2.jpg">
+										</el-avatar>
+									</div>
+								</template>
+							</el-button>
+						</el-popover>
+					</div>
+					<el-divider><i class="el-icon-present"></i></el-divider>
+
+					<!-- 侧边导航 -->
+					<div class="Sidebar-box">
+						<el-row :gutter="8" class="nav">
+							<el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" v-for="(navg,index) in nav" :key="index">
+								<a :href=navg.href><i v-html="navg.navicon"></i> {{navg.navname}}</a>
+							</el-col>
+						</el-row>
+					</div>
+
+					<!-- 时间线 -->
+					<el-row :gutter="8">
+						<el-col :md="24" :lg="24" :xl="24">
+							<div class="block hidden-xs-only">
+								<el-divider><i class="el-icon-cherry"></i></el-divider>
+								<el-timeline>
+									<el-timeline-item timestamp="2018/4/12" placement="top">
+										<el-card>
+											<h4>更新 Github 模板</h4>
+											<p>王小虎 提交于 2018/4/12 20:46</p>
+										</el-card>
+									</el-timeline-item>
+									<el-timeline-item timestamp="2018/4/3" placement="top">
+										<el-card>
+											<h4>更新 Github 模板</h4>
+											<p>王小虎 提交于 2018/4/3 20:46</p>
+										</el-card>
+									</el-timeline-item>
+									<el-timeline-item timestamp="2018/4/2" placement="top">
+										<el-card>
+											<h4>更新 Github 模板</h4>
+											<p>王小虎 提交于 2018/4/2 20:46</p>
+										</el-card>
+									</el-timeline-item>
+									<el-timeline-item timestamp="2018/4/2" placement="top">
+										<el-card>
+											<h4>更新 Github 模板</h4>
+											<p>王小虎 提交于 2018/4/2 20:46</p>
+										</el-card>
+									</el-timeline-item>
+								</el-timeline>
+							</div>
+						</el-col>
+					</el-row>
+
+				</el-aside>
+
+				<!-- 右边部分 -->
+				<el-main width=80% class="right-box">
+					<!-- 中央展示框 -->
+					<el-card :body-style="{ padding: '0px'}" style="max-height: 90%;">
+						<div class="video-title">
+							<ul class="video-ul">
+								
+							</ul>
+						</div>
+						<video id="a1" src="video/新海誠《言葉之庭》主題曲AMV - Rain (中日歌詞)(Cover).mp4" loop>
+							你的浏览器不支持
+						</video>
+					</el-card>
+
+					<el-divider content-position="left"></el-divider>
+
+					<!-- 热播新番 -->
+					<div>热播新番</div>
+					<div class="hot-show">
+						<el-row :gutter="24">
+							<el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+								<template>
+									<el-carousel :interval="3700" type="card" height="450px" autoplay loop>
+										<el-carousel-item v-for="(item,index) in image" :key="index">
+											<span class="keke">
+												<img :src=item style="width: 100%;height: 100%;">
+											</span>
+											<h3 class="medium">{{ item }}</h3>
+										</el-carousel-item>
+									</el-carousel>
+								</template>
+							</el-col>
+						</el-row>
+					</div>
+
+					<!-- 历史播放 -->
+					<div class="hisplay-box">
+						<div style="margin-bottom: 20px;">历史播放</div>
+						<div>
+							<el-row>
+								<el-col v-for="(item,index) in histor" :key="index" :xs="24" :sm="12" :md="8" :lg="6" :xl="6">
+									<el-card style="width: 265px; height: 350px; margin:0 auto; margin-bottom: 20px;" shadow="hover">
+										<a :href=item.href>
+											<img :src=item.img width="225px" height="300px"></img>
+										</a>
+										<span style="display: block;">{{item.name}}</span>
+									</el-card>
+								</el-col>
+							</el-row>
+						</div>
+					</div>
+
+					<!-- 近期上新 -->
+					<div>
+						<el-divider content-position="left"></el-divider>
+						<div style="margin-bottom: 20px;">近期上新</div>
+						<div style="width: 80%; display: inline-block;">
+							<el-row>
+								<el-col v-for="(item,index) in Recentmov" :key="index" :xs="12" :sm="8" :md="5" :lg="4" :xl="4">
+									<el-card :body-style="{ padding: '0px'}" style="width: 160px; height: 125px; margin-bottom: 20px; margin: 0 auto;"
+									 shadow="hover">
+										<a :href=item.href>
+											<img :src=item.img width="100%" height="100%"></img>
+										</a>
+										<span>{{item.name}}</span>
+									</el-card>
+								</el-col>
+							</el-row>
+						</div>
+						<div style="display: inline-block; width: 15%;">
+
+						</div>
+					</div>
+
+				</el-main>
+			</el-container>
+
+		</div>
+	</body>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/axios.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/show.js"></script>
+	<script src="js/elementui.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					visible: false,
+					// 热播新番图片
+					image: [
+						'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606633626352&di=e282ed68b504c993bb366dac05b7a42b&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Ff%2F53c76be79661f.jpg',
+						'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606633758951&di=a7e34bb8dd6662bac719492d36bc1ee8&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fb5b689ac75fa44dd27aa481164ae05b4d9887496.jpg',
+						'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606633803511&di=2af90ade365d284a550e793a10075e6b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F22%2F20170422004513_AktZy.jpeg',
+						'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606633841682&di=680e1861d8fd97163b712264f006b3e5&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fb614ba435567bef19dad3a6fb4b5c52e1a549606.jpg',
+					],
+					sexs: ["男", "女"],
+					headImg: [
+						"<img src='images/user-headimg.jpg' >",
+						"<img src='images/user-headimg2.jpg' >"
+					],
+					users: {
+						"id": "",
+						"username": "",
+						"password": "",
+						"sex": "",
+						"personNote": "",
+						"level": "",
+						"headImg": "",
+						"likes": "",
+						"fens": "",
+						"zans": "",
+						"plays": "",
+						"reads": ""
+					},
+					
+					// 侧边导航
+					nav: [{
+							href: 'index.html',
+							navicon: '<i class="fa fa-home"></i>',
+							navname: '首页'
+						},
+						{
+							href: '',
+							navicon: '<i class="fa fa-eercast"></i>',
+							navname: '发现'
+						},
+						{
+							href: '',
+							navicon: '<i class="fa fa-leaf"></i>',
+							navname: '关于'
+						},
+						{
+							href: '',
+							navicon: '<i class="fa fa-heart"></i>',
+							navname: '喜欢'
+						},
+						{
+							href: '',
+							navicon: '<i class="fa fa-star"></i>',
+							navname: '收藏'
+						},
+						{
+							href: '',
+							navicon: '<i class="fa fa-paper-plane"></i>',
+							navname: '分享'
+						}
+					],
+					// 历史播放
+					histor: [{
+							href: 'xiangxi.html',
+							img: 'images/tayutademao.webp',
+							name: '她与她的猫'
+						},
+						{
+							href: 'https://www.bilibili.com/bangumi/play/ss2546/?from=search&seid=6780699932640646323',
+							img: 'images/yanyezhiting.jpg',
+							name: '言叶之庭'
+						},
+						{
+							href: 'https://www.bilibili.com/bangumi/play/ss2688/?from=search&seid=6780699932640646323',
+							img: 'images/miaosuwulimi.png',
+							name: '秒速五厘米'
+						},
+						{
+							href: 'https://www.bilibili.com/bangumi/play/ss33343/?from=search&seid=6780699932640646323',
+							img: 'images/tianqizhizi.png',
+							name: '天气之子'
+						},
+					],
+					// 连载新番
+					Recentmov: [{
+							img: 'image/Recentmov1.webp',
+							name: '11111'
+						},
+						{
+							img: 'image/Recentmov2.webp',
+							name: '11111'
+						},
+						{
+							img: 'image/Recentmov3.webp',
+							name: '11111'
+						},
+						{
+							img: 'image/Recentmov4.webp',
+							name: '11111'
+						},
+						{
+							img: 'image/Recentmov5.webp',
+							name: '11111'
+						},
+					]
+				}
+			}
+			// mounted(){
+			// 	axios.get('json/myindex.json')
+			// 	.then(res => {
+			// 		var users_id = u_id;
+			// console.log(u_id)
+			// console.log(users_id)
+			// 		this.users = res.data.data[1].users[users_id];
+			// 			if(this.users.likes.length > 4){
+			// 				this.users.likes = this.users.likes.slice(-99,-4) + '.' + this.users.likes.slice(-4,-3) + "w";
+			// 			}
+			// 			if(this.users.fens.length > 4){
+			// 				this.users.fens = this.users.fens.slice(-99,-4) + '.' + this.users.fens.slice(-4,-3) + "w";
+			// 			}
+			// 			if(this.users.zans.length > 4){
+			// 				this.users.zans = this.users.zans.slice(-99,-4) + '.' + this.users.zans.slice(-4,-3) + "w";
+			// 			}
+			// 			if(this.users.plays.length > 4){
+			// 				this.users.plays = this.users.plays.slice(-99,-4) + '.' + this.users.plays.slice(-4,-3) + "w";
+			// 			}
+			// 			if(this.users.reads.length > 4){
+			// 				this.users.reads = this.users.reads.slice(-99,-4) + '.' + this.users.reads.slice(-4,-3) + "w";
+			// 			}
+			// 	})
+			// }
+		})
+	</script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/danmu.js" type="text/javascript" charset="utf-8"></script>
+</html>

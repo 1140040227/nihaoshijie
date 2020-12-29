@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="" content=""/>
+		<title>我的主页</title>
+		<link rel="icon" href="images/logos.png">
+		<link rel="stylesheet" type="text/css" href="./css/myindex.css"/>
+	</head>
+	<body>
+		
+		<!-- 大div -->
+		<div class="big-div"></div>
+		<div id="app">
+			<!-- 导航栏 -->
+			<div class="header-box">
+				<div class="header">
+					<div class="logo-img">
+						<img src="images/Logo.svg" >
+					</div>
+					<ul class="header-ul">
+						<li>主站</li>
+						<li>番剧</li>
+						<li>热门</li>
+						<!-- <li>活动</li> -->
+						<!-- <li>新番列表</li> -->
+					</ul>
+					<div class="search-box">
+						<input type="search" name="search" value="" placeholder="追上火车算什么？" />
+						<svg class="icon icon-search" aria-hidden="true">
+						  <use xlink:href="#icon-icon-test"></use>
+						</svg>
+					</div>
+					<div class="user">
+						<span class="user-headimg" v-html="images[users.id-1]">
+							<!-- <img src="images/user-headimg.jpg" > -->
+							<!-- 一开始提供默认游客头像，用户登录后，获取头像进行渲染 -->
+						</span>
+						<div class="user-control">
+							{{users.username}}
+							<!-- 登陆后改为显示用户名 -->
+						</div>
+						<div class="user-controls">
+							<ul>
+								<li>
+									退出登录
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- 主页banner -->
+			<div class="user-banner">
+				<!-- 背景图 -->
+				<img src="./images/banner2.jpg" class="bg-img">
+				<!-- 用户信息 -->
+				<div class="user-information">
+					<!-- 头像 -->
+					<span class="banner-headimg" v-html="images[users.id-1]">
+						<!-- <img src="images/user-headimg.jpg" > -->
+					</span>
+					<!-- 用户详细信息部分 -->
+					<div class="user-container">
+						<!-- 上部分 -->
+						<div class="user-container-top">
+							<!-- 用户名 -->
+							<span class="user-name">
+								{{users.username}}
+								<!-- 性别 -->
+								<span v-html="sexs[users.sex]">
+									
+								</span>
+								<!-- <svg class="icon icon-xingbie" aria-hidden="true">
+								  <use xlink:href="#icon-xingbienv"></use>
+								</svg> -->
+							</span>
+							<span class="user-level">LV{{users.level}}</span>
+						</div>
+						<div class="user-container-bottom">
+							<input type="text" name="person-note" v-model="users.personNote" disabled="disabled"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 用户主页导航 -->
+			<div class="user-header">
+				<ul class="user-header-ul">
+					<li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-zhuye"></use>
+						</svg>
+						主页
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-tubiaozhizuomoban-"></use>
+						</svg>
+						动态
+					</li>
+					<!-- <li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-tougao"></use>
+						</svg>
+						投稿
+					</li> -->
+					<!-- <li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-pindao"></use>
+						</svg>
+						频道
+					</li> -->
+					<!-- <li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-shoucang"></use>
+						</svg>
+						收藏
+					</li> -->
+					<li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-aixin"></use>
+						</svg>
+						订阅
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+						  <use xlink:href="#icon-shezhi"></use>
+						</svg>
+						设置
+					</li>
+				</ul>
+				
+				<ul class="user-number-ul">
+					<li>
+						<p class="user-numbers-text">关注数<br><span class="user-numbers-num">{{users.likes}}</span></p>
+					</li>
+					<li>
+						<p class="user-numbers-text">粉丝数<br><span class="user-numbers-num">{{users.fens}}</span></p>
+					</li>
+					<li>
+						<p class="user-numbers-text">获赞数<br><span class="user-numbers-num">{{users.zans}}</span></p>
+					</li>
+					<li>
+						<p class="user-numbers-text">播放数<br><span class="user-numbers-num">{{users.plays}}</span></p>
+					</li>
+					<li>
+						<p class="user-numbers-text">阅读数<br><span class="user-numbers-num">{{users.reads}}</span></p>
+					</li>
+				</ul>
+				
+				<!-- 滑动条 -->
+				<div class="slide-box">
+					<span class="slide"></span>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		<!-- 个人主页详情模块 -->
+		<div class="myindex-main">
+			<!-- 正在追番 -->
+			<!-- <div class="like-movie-box">
+				<div class="like-movie-title">
+					<h3>正在追番</h3>
+					<span>更多></span>
+				</div>
+				<div class="like-movie-main">
+					<div class="like-movies">
+						<div class="like-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="like-movies-rightbox">
+							<span class="like-movies-righttitle">
+								你的名字
+							</span>
+							<p class="like-movies-righttext">
+								在远离大都会的小山村，住着巫女世家出身的高中女孩宫水三叶。不知从何时起，三叶在梦中就会变成一个住在东京的高中男孩。另一方面，住在东京的高中男孩立花泷则总在梦里来到陌生的小山村，以女孩子的身份过着全新的生活。许是受那颗神秘彗星的影响，立花和三叶在梦中交换了身份
+							</p>
+						</div>
+					</div> -->
+					
+					<!-- <div class="like-movies">
+						<div class="like-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="like-movies-rightbox">
+							<span class="like-movies-righttitle">
+								你的名字
+							</span>
+							<p class="like-movies-righttext">
+								你的名字是？
+							</p>
+						</div>
+					</div>
+					<div class="like-movies">
+						<div class="like-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="like-movies-rightbox">
+							<span class="like-movies-righttitle">
+								你的名字
+							</span>
+							<p class="like-movies-righttext">
+								你的名字是？
+							</p>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+			<!-- 收藏的视频 -->
+			<!-- <div class="collect-movie-box">
+				<div class="collect-movie-maintitle">
+					<h3>我的收藏</h3>
+					<span>更多></span>
+				</div>
+				<div class="collect-movie-main">
+					<div class="collect-movies">
+						<div class="collect-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="collect-movies-rightbox">
+							<span class="collect-movies-righttitle">
+								你的名字
+							</span>
+							<p class="collect-movies-righttext">
+								你的名字是？
+							</p>
+						</div>
+					</div>
+					
+					<div class="collect-movies">
+						<div class="collect-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="collect-movies-rightbox">
+							<span class="collect-movies-righttitle">
+								你的名字
+							</span>
+							<p class="collect-movies-righttext">
+								你的名字是？
+							</p>
+						</div>
+					</div>
+					<div class="collect-movies">
+						<div class="collect-movies-leftimgbox">
+							<img src="images/nidemingzi.jpg" >
+						</div>
+						<div class="collect-movies-rightbox">
+							<span class="collect-movies-righttitle">
+								你的名字
+							</span>
+							<p class="collect-movies-righttext">
+								你的名字是？
+							</p>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+			<!-- 我的频道 -->
+			<!-- <div class="mychannel-box">
+				<div class="mychannel-title">
+					<h3>我的频道</h3>
+				</div>
+				<div class="mychannel-create-box">
+					<p>投稿视频可以分类展示了</p>
+					<span>创建频道</span>
+				</div>
+			</div> -->
+			
+			<!-- 个人动态渲染 -->
+			<!-- <div class="personal-news-header">
+				<div class="personal-news-headerleft">
+					<div class="personal-news-headerimg">
+						<img src="images/user-headimg.jpg" >
+					</div>
+					<div class="personal-news-headername">
+						<p class="personal-news-username">
+							干干净净
+						</p>
+						<span class="personal-news-date">11-25</span>
+					</div>
+				</div>
+				<div class="personal-news-headerright">
+					<svg class="icon icon-ziyuan" aria-hidden="true">
+					  <use xlink:href="#icon-ziyuan"></use>
+					</svg>
+					<div class="personal-news-headerright-box">
+						<ul class="personal-news-headerright-boxul">
+							<li>置顶</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="personal-news-main">
+				<p class="personal-news-maintext">
+					我是动态的主体文字内容
+				</p>
+				<div class="personal-news-main-movie">
+					<div class="personal-news-main-movieleft">
+						<img src="images/banner.jpg" >
+						<span class="personal-news-main-movietips">投稿视频</span>
+						<span class="personal-news-main-moviemain">
+							<span class="personal-news-main-moviedate">
+								02:38
+							</span>
+							<svg class="icon icon-shizhong" aria-hidden="true">
+							  <use xlink:href="#icon-shizhong"></use>
+							</svg>
+						</span>
+					</div>
+					<div class="personal-news-main-movieright">
+						<p class="personal-news-main-movierightTitle">我是动态标题</p>
+						<p class="personal-news-main-movierightText">我是动态视频内容</p>
+						<span class="personal-news-main-moviedown">
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-bofang"></use>
+							</svg>
+							<span class="personal-news-main-moviedownnum">100</span>
+							<svg class="icon" aria-hidden="true">
+							  <use xlink:href="#icon-danmu"></use>
+							</svg>
+							<span class="personal-news-main-moviedownnum">20</span>
+						</span>
+					</div>
+				</div> -->
+				<!-- 动态操作 -->
+				<!-- <div class="personal-news-control">
+					<span class="personal-news-controlbox">
+						<svg class="icon icon-zhuanfa" aria-hidden="true">
+						  <use xlink:href="#icon-web-icon-"></use>
+						</svg>
+						<span class="personal-news-controltext">转发</span>
+					</span>
+					<span class="personal-news-controlbox">
+						<svg class="icon icon-zhuanfa" aria-hidden="true">
+							<use xlink:href="#icon-pinglun"></use>
+						</svg>
+						<span class="personal-news-controltext">评论</span>
+					</span>
+					<span class="personal-news-controlbox">
+						<svg class="icon icon-zhuanfa" aria-hidden="true">
+							<use xlink:href="#icon-dianzan"></use>
+						</svg>
+						<span class="personal-news-controltext">赞</span>
+					</span>					
+				</div>
+			</div>
+		</div> -->
+		
+		<!-- 个人动态渲染 -->
+		
+		<!-- <div class="personal-news-box">
+			
+		</div> -->
+		
+		<!-- 订阅模块 -->
+			<!-- <div class="subscribe-title">
+				<h3>我的订阅</h3>
+			</div>
+			<div class="subscribe-main">
+				<div class="subscribe-movies">
+					<div class="subscribe-moviesleft">
+						<div class="subscribe-moviesleft-imgbox">
+							<span class="subscribe-tips">独家</span>
+							<img src="images/tianqizhizi.png" >
+						</div>
+					</div>
+					<div class="subscribe-moviesright">
+						<span class="subscribe-moviesright-title">
+							天气之子
+						</span>
+						<p class="subscribe-moviesright-text">
+							高一那年夏天，帆高（醍醐虎汰朗 配音）离开位在离岛的家乡，独自一人来到东京，拮据的生活迫使他不得不找份工作，最后来到一间专门出版奇怪超自然刊物的出版社担任写手。不久，东京开始下起连日大雨，仿佛暗示着帆高不顺遂的未来，在这座繁忙城市里到处取材的帆高邂逅了与弟弟相依为命，不可思议的美少女阳菜（森七菜 配音）。「等等就会放晴了喔。」阳菜这样告诉着帆高，不久，头顶的乌云逐渐散去，耀眼的阳光洒落街道……原来，阳菜拥有「改变天气」的奇妙能力……
+						</p>
+						<p class="subscribe-moviesright-textlikes">电影 | 日本</p>
+						<p class="subscribe-moviesright-textlikes">看到1:48:59</p>
+					</div>
+				</div> -->
+				
+				
+			</div>
+		</div>
+		
+	</body>
+	<script src="./js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/axios.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/iconfont.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vuedata.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./js/myindex.js" type="text/javascript" charset="utf-8"></script>
+</html>

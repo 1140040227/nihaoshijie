@@ -1,0 +1,127 @@
+
+video {
+    object-fit: fill; 
+    width: 100%;
+    max-height: 100%;
+	transition: 1s ease;
+	border-radius: 5px;
+  }
+
+.video-title{
+	width: 95%;
+	border-radius: 5px;
+	height: 50%;
+	position: absolute;
+	z-index: 3;
+	color: deepskyblue;
+	font-family: "楷体";
+	overflow: hidden;
+	/* border: 1px solid red; */
+}
+.video-ul{
+	width: 150%;
+	height: 50%;
+	position: absolute;
+	/* border: 1px solid red; */
+	display: none;
+}
+.video-ul li{
+	position: absolute;
+	font-family: "Trebuchet MS";
+	/* animation: right 5s infinite linear; */
+	list-style: none;
+}
+  @keyframes rights{
+	from{
+		left: 120%;
+	}
+	to{
+		left: -50%;
+	}
+}
+@keyframes left{
+	0%{
+		left: 8%;
+		opacity: 0;
+	}
+	50%{
+		left: 8%;
+		opacity: 0;
+	}
+	100%{
+		left: 18%;
+		opacity: 1;
+	}
+}
+@keyframes button{
+	0%{
+		top: 45%;
+		opacity: 0;
+	}
+	50%{
+		top: 45%;
+		opacity: 0;
+	}
+	100%{
+		top: 55%;
+		opacity: 1;
+	}
+}
+.join-this{
+	width: 200px;
+	line-height: 50px;
+	border: 1px solid deepskyblue;
+	position: absolute;
+	left: 18%;
+	top: 55%;
+	text-align: center;
+	font-weight: bolder;
+	color: deepskyblue;
+	font-size: 22px;
+	cursor: pointer;
+	animation: button 3s ease;
+	overflow: hidden;
+	border-radius: 5px;
+	transition: 1s ease;
+	z-index: 2;
+}
+.join-this::before{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 200px;
+	height: 50px;
+	top: 0;
+	left: -200px;
+	background-color: deepskyblue;
+	transition: 1s ease;
+	z-index: -1;
+	font-family: "仿宋";
+}
+.join-this:hover::before{
+	left: 0;
+}
+.join-this:hover{
+	color: white;
+}
+
+.title-one,.title-two{
+	font-size:30px;
+	color: deepskyblue;
+	font-weight: bolder;
+	text-align: center;
+	display: block;
+	line-height: 30px;
+	position: absolute;
+	left: 18%;
+	transition: 1s ease;
+	font-family: "仿宋";
+}
+.title-one{
+	top: 35%;
+	animation: left 1s ease;
+}
+.title-two{
+	top: 45%;
+	animation: right 2s ease;
+}

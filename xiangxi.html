@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/Details.css">
+    <link rel="stylesheet" href="css/denglu.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/elementui-dis.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="app">
+  <el-container id="Box">
+        <!-- 侧边导航 -->
+      <el-aside  width="15%" class="left-box">
+
+        <!-- log盒子 -->
+        <div class="Log-box">
+          <el-popover placement="right" width="300" trigger="hover" >
+  
+            <div class="login-wrapper">
+              <form action="" class="form">
+          <span v-html="headImg[users.id-1]"></span>
+                <h2>用户登录</h2>
+                <div class="input-group">
+                  <input type="text" name="username" id="username" />
+                  <label for="username">用户名称</label>
+                </div>
+                <div class="input-group">
+                  <input type="password" name="psd" id="psd" >
+                  <label for="psd">密码</label>
+                </div>
+          <button type="button" id="sumbtn" class="submit-btn">登录</button>
+                <a href="#" class="forgot-pw">忘记密码?</a>
+              </form>
+        
+            </div>
+  
+            <el-button plain slot="reference" style="border: none;">
+              <template>
+                <div>
+                <el-avatar :size="50" src="images/user-headimg2.jpg">
+                </el-avatar>
+                </div>
+            </template>
+            </el-button>
+          </el-popover>
+        </div>
+    
+        <el-divider><i class="el-icon-present"></i></el-divider>
+    
+          <!-- 侧边导航 -->
+        <div class="Sidebar-box">
+            <el-row :gutter="8" class="nav">
+              <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8"
+              v-for="(navg,index) in nav" :key= "index">
+                <a :href=navg.href> <i v-html="navg.navicon"></i> {{navg.navname}}</a>
+              </el-col>
+            </el-row>
+        </div>
+          
+          <!-- 时间线 -->
+        <el-row :gutter="8">
+            <el-col :md="24" :lg="24" :xl="24">
+          <div class="block hidden-xs-only">
+            <el-divider><i class="el-icon-cherry"></i></el-divider>
+            <el-timeline>
+              <el-timeline-item timestamp="2018/4/12" placement="top">
+                <el-card>
+                  <h4>更新 Github 模板</h4>
+                  <p>王小虎 提交于 2018/4/12 20:46</p>
+                </el-card>
+              </el-timeline-item>
+              <el-timeline-item timestamp="2018/4/3" placement="top">
+                <el-card>
+                  <h4>更新 Github 模板</h4>
+                  <p>王小虎 提交于 2018/4/3 20:46</p>
+                </el-card>
+              </el-timeline-item>
+              <el-timeline-item timestamp="2018/4/2" placement="top">
+                <el-card>
+                  <h4>更新 Github 模板</h4>
+                  <p>王小虎 提交于 2018/4/2 20:46</p>
+                </el-card>
+              </el-timeline-item>
+            </el-timeline>
+          </div>
+          </el-col>
+        </el-row>
+    
+      </el-aside>
+
+        <!-- 右边详情页 -->
+      <el-main  width="80%" class="right-box">     
+        <!-- 顶部作品大致介绍 -->
+        <el-card >
+        <div class="detail-box">
+          <!-- 作品封面     -->
+          <el-card shadow="hover" class="mov-img">
+                  <img src="image/headerimg1.webp">
+          </el-card>
+           <!-- 作品介绍 -->
+          <el-card class="content-box" shadow="never" style="border: none;">
+            <!-- 番劇名字 -->
+            <div style="margin-bottom: 2%; font-size: larger;">
+                    {{content.header}}
+            </div>
+            <!-- 番劇熱度 -->
+            <div class="xbt-box">
+                      <div style="display: inline-block; border: none;">
+                        <span>总播放</span>
+                        <span>9366.8萬</span>
+                      </div>
+                      <div style="display: inline-block; text-align: center;">
+                        <span>追番人數</span>
+                        <span>9366.8萬</span>
+                      </div>
+                      <div style="display: inline-block; text-align: center;">
+                        <span>彈幕總數</span>
+                        <span>9366.8萬</span>
+                      </div>
+            </div>
+            <!-- 番劇日期 -->
+            <div style="margin-bottom: 2%; font-size: 10px;">
+              {{content.data}}
+            </div>                
+            <!-- 番劇介紹 -->
+            <div style="margin-bottom: 2%; font-size: 14px;">
+              {{content.body}}
+            </div>   
+            <!-- 評分 -->
+            <div style="margin-bottom: 2%;">
+                    <el-rate v-model="content.value" 
+                    disabled show-score text-color="#ff9900" 
+                    score-template="{value}">
+                    </el-rate>
+            </div>
+            <!-- 按鈕 -->
+            <div>
+              <el-button type="primary" style="width: 125px; height: 45px;">
+                <i class="fa fa-heart" style="color: white;"></i>
+                <a style="text-decoration: none; color: white;" 
+                href="https://www.bilibili.com/bangumi/play/ss12044/?from=search&seid=10065789659404471495">
+                  <span style="font-size: larger;">追劇</span>
+                </a> 
+              </el-button>
+              <el-button type="primary" style=" height: 45px; background-color: antiquewhite; border: none; border-radius: 20px;">
+                <el-row :gutter="8">
+                  <el-col v-for="(item,index) in share" :key= "index"
+                  :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+                    <i v-html="item.shareicon" style="color: #ccc;margin: 7px;"></i>
+                  </el-col>
+                </el-row>
+              </el-button>
+            </div>
+          </el-card>
+    
+        </div>         
+        </el-card>
+
+        <!-- 内容分集页(作品詳情，长评，短评，相关) -->
+        <el-tabs type="border-card">
+
+          <el-tab-pane label="作品详情">
+            <div class="positive-box">
+              <!-- 左半部 -->
+              <el-card class="info-box" shadow="never">
+              <!-- 集数 -->
+              <el-row :gutter="30">
+                <el-col v-for="(item,index) in Episode" :key= "index"
+                  :xs="20" :sm="12" :md="11" :lg="8" :xl="6">
+                  <el-card :body-style="{ padding: '0px'}" style="margin-top: 10%;  min-width: 185px;" shadow="hover">
+                    <img :src=item.img height="60px" width="96" style="vertical-align: middle;">
+                    <div id="ainfo-box" style="vertical-align: middle; margin-left: 1%;">
+                      <a href="#">
+                        <span>{{item.name}}<br/>{{item.reader}}
+                        </span>                   
+                       </a>    
+                     </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+
+              <!-- 分割线 -->
+              <el-divider></el-divider>
+
+              <!-- 更多推荐 -->
+              <div style="margin-left: 20px;">
+                <p>更多推荐</p>
+              </div>
+              <a href="#">
+                <el-card shadow="never" style="border: none;">
+                  <el-row :gutter="24">
+                    <el-col :span="10" v-for="(reco,index) in recommend" :key= "index"
+                    :xs="20" :sm="12" :md="10" :lg="8" :xl="5">
+                      <el-card :body-style="{ padding: '0px'}"  
+                      style="border: none; margin-bottom: 10%;" shadow="hover">
+                        <img :src="reco.img" alt="" height="240px" width="187px">
+                        <span>{{reco.name}}</span>
+                      </el-card>
+                    </el-col>
+                  </el-row>
+                </el-card>
+              </a>
+              </el-card>
+              <!-- 右半部 -->
+              <div style="display: inline-block; width: 25%; height: 100%; margin-left: 1%;">
+                <!-- 声优列表 -->
+                  <el-card class="Voact-box hidden-xs-only " shadow="hover">
+                    <el-row>
+                      <el-col>
+                        <div>
+                          <p style="display: block; margin-bottom: 10px;font-size: larger;">
+                            角色声优
+                          </p>
+                          <span  style="display: block;margin-bottom: 5px;">
+                            {{voactlist.protagonist}}
+                          </span>
+                          <span  style="display: block;margin-bottom: 5px;">
+                            {{voactlist.supporting2}}
+                          </span>
+                          <span  style="display: block;margin-bottom: 5px;">
+                            {{voactlist.supporting3}}
+                          </span>
+                          <span  style="display: block;margin-bottom: 5px;">
+                            {{voactlist.supporting4}}
+                          </span>
+                        </div>
+                      </el-col>
+                    </el-row> 
+                  </el-card>
+
+            
+                <!-- 工作人员 -->
+                <el-card class="staff-box hidden-xs-only" shadow="hover">
+                  <el-row>
+                    <el-col>
+                      <div>
+                        <p style="display: block; margin-bottom: 10px;font-size: larger;">
+                                        工作人员
+                        </p>
+                        <span  style="display: block;margin-bottom: 5px;">
+                                        {{staff.Supervise}}
+                        </span>
+                        <span  style="display: block;margin-bottom: 5px;">
+                                        {{staff.composition}}
+                        </span>
+                        <span  style="display: block;margin-bottom: 5px;">
+                                        {{staff.Original}}
+                        </span>
+                        <span  style="display: block;margin-bottom: 5px;">
+                                        {{staff.rolecon}}
+                        </span>
+                      </div>
+                    </el-col>
+                  </el-row> 
+                </el-card> 
+              </div>
+              
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane label="评论">
+            <div class="ValineBox">
+              <el-row :gutter="20">
+                <el-col :md='16' :sm='24' :xs='24' class="Valine-box">
+                  <div id="vcomments"></div>
+                </el-col>
+                <el-col :md='8' :sm='24' :xs='24' class="Valine-review">
+                  <div style="border: 1px solid #f0f0f0;border-radius: 4px;padding: 10px;">
+                    <div class="Valine-review-title">
+                      <span></span>
+                      <span>
+                        <i class="el-icon-refresh">换一换</i></span>
+                    </div>
+                    <div class="Valine-review-list">
+                      <div class="Valine-review-info"></div>
+                    </div>
+                  </div>
+                </el-col>
+              </el-row>
+            </div>
+            
+          </el-tab-pane>
+          <el-tab-pane label="相关视频">定时任务补偿</el-tab-pane>
+        </el-tabs>
+
+        </el-main>
+  </el-container>
+</div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/elementui.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/Valine.js"></script>
+<script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          visible: false,
+          currentDate: new Date(),
+          // 集数
+          Episode:[
+            {
+              name:'第一话',
+              reader:'22222',
+              img:'image/jishu1.webp'
+            },
+            {
+              name:'第二话',
+              reader:'2222',
+              img:'image/jishu2.webp'
+            },
+            {
+              name:'第三话',
+              reader:'2222',
+              img:'image/jishu3.webp'
+            },
+            {
+              name:'第四话',
+              reader:'2222',
+              img:'image/jishu4.webp'
+            },
+            {
+              name:'第五话',
+              reader:'2222',
+              img:'image/jishu5.webp'
+            },
+            {
+              name:'第六话',
+              reader:'2222',
+              img:'image/jishu6.webp'
+            }
+          ],
+          // 更多推荐
+          recommend:[
+            {
+              img:'image/tianqi.webp',
+              name:'大战完结篇'
+            },
+            {
+              img:'image/yanye.webp',
+              name:'灼眼的夏娜'
+            },
+            {
+              img:'image/miaosu.webp',
+              name:'弹丸论破-绝望篇'
+            },
+            {
+              img:'image/tademao.webp',
+              name:'弹丸论破-未来篇'
+            },
+          ],
+          // 头部介绍
+          content: {
+            header: '你的名字',
+            data:'2000年10月16日开播',
+            body:'在远离大都会的小山村，住着巫女世家出身的高中女孩宫水三叶。不知从何时起，三叶在梦中就会变成一个住在东京的高中男孩。另一方面，住在东京的高中男孩立花泷则总在梦里来到陌生的小山村，以女孩子的身份过着全新的生活。许是受那颗神秘彗星的影响，立花和三叶在梦中交换了身份',
+            value: 3.7
+          },
+          // 侧边导航
+          nav:[
+            {
+              href:'index.html',
+              navicon:'<i class="fa fa-home"></i>',
+              navname:'首页'
+            },
+            {
+              href:'',
+              navicon:'<i class="fa fa-eercast"></i>',
+              navname:'发现'
+            },
+            {
+              href:'',
+              navicon:'<i class="fa fa-leaf"></i>',
+              navname:'关于'
+            },
+            {
+              href:'',
+              navicon:'<i class="fa fa-heart"></i>',
+              navname:'喜欢'
+            },
+            {
+              href:'',
+              navicon:'<i class="fa fa-star"></i>',
+              navname:'收藏'
+            },
+            {
+              href:'',
+              navicon:'<i class="fa fa-paper-plane"></i>',
+              navname:'分享'
+            }
+          ],
+          // 按钮图标
+          share:[
+            {
+              shareicon:'<i class="fa fa-weibo"></i>'
+            },
+            {
+              shareicon:'<i class="fa fa-twitter-square"></i>'
+            },
+            {
+              shareicon:'<i class="fa fa-qq"></i>'
+            },
+          ],
+          // 声优
+          voactlist:
+            {
+              protagonist:'龍崎希羅：梶原岳人',
+              supporting:'夜那月露西亞：榎木淳弥',
+              supporting2: '天宮美森：本渡楓',
+              supporting3:'黑羽愛麗絲：小倉唯',
+              supporting4:'進藤一樹：田谷隼'
+          },
+          // 工作人员
+          staff:
+            {
+              Supervise:'監督：川口敬一郎',
+              composition:'系列構成：磯崎輪太郎 / 赤尾でこ',
+              Original:'角色原案：ぽんず / 久方綜司',
+              rolecon:'角色設計：原田大基'
+            },
+            users:{
+		  	"id":"",
+		  	"username":"",
+		  	"password":"",
+		  	"sex":"",
+		  	"personNote":"",
+		  	"level":"",
+		  	"headImg":"",
+		  	"likes":"",
+		  	"fens":"",
+		  	"zans":"",
+		  	"plays":"",
+		  	"reads":""
+      },
+      headImg:[
+			  "<img src='images/user-headimg.jpg' >",
+			  "<img src='images/user-headimg2.jpg' >"
+      ],
+      sexs:["男","女"],
+        }
+      },
+      mounted() {
+        new Valine({
+            el: '#vcomments',
+            appId: 'dN5gEvH6RaVgxYkjB7aLPCBT-gzGzoHsz',
+            appKey: 'Jl3efokCnDgc8QxRaNE9QTH4'
+        }),
+        this.delValine()
+      },
+      methods: {
+        delValine(){
+          var infoEle = document.querySelector('.vpower');
+          infoEle.style.display='none';
+        }
+      },
+    })
+  </script>
+<script src="js/index.js"></script>
+
+</html>

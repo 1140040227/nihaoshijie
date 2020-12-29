@@ -1,0 +1,56 @@
+
+.Log-box{
+    height: 52px;
+}
+
+.Sidebar-box{
+    width: 100%;
+    max-height: 35%;
+}
+
+.block{
+    max-height: 53%;
+    max-width: 85%;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+.log-img{
+    position: relative;
+    padding-top: 2.5%;
+    padding-left: 3%;
+    width: 50px;
+    height: 45px;
+}
+
+
+
+.nav{
+    max-height: 50%;
+}
+
+.nav>div{
+    padding-top: 5%;
+}
+
+.nav a{
+    display: block;
+    padding:10%;
+    margin: 0 auto;
+    margin-bottom: 10%;            
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.nav a:hover{
+    background-color:#EEEEEE;
+    color: #222222;
+}
+
+
+
+
+
